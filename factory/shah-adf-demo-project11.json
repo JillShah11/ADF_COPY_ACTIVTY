@@ -1,0 +1,9 @@
+{
+	"name": "shah-adf-demo-project11",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c621e9f5-9626-452e-8fd8-2a302890212f",
+		"tenantId": "32f8512c-157b-4f06-929a-a52eeacad7ca"
+	}
+}

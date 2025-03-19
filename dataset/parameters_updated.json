@@ -1,0 +1,33 @@
+{
+	"name": "parameters_updated",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "httptoadftostorageaccount",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "random.json",
+				"fileSystem": "parameters"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"rel:url": {
+					"type": "string"
+				},
+				"p-sink_folder": {
+					"type": "string"
+				},
+				"p_file_name": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
