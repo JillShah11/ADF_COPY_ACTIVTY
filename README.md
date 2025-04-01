@@ -81,7 +81,4 @@ This project demonstrates how to use **Azure Data Factory (ADF)** to ingest data
 
 ---
 
-## 📬 Contact
 
-For questions or collaboration, feel free to reach out at:  
-📧 *[Your Contact Email]*
