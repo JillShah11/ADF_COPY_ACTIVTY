@@ -1,67 +1,87 @@
-# ADF_COPY_ACTIVTY
+# 📦 ADF_COPY_ACTIVITY
 
-README: Azure Data Factory (ADF) - Copy Activity with Medallion Architecture
+## 📘 Azure Data Factory - Copy Activity with Medallion Architecture
 
-Overview
+### 🧾 Overview
 
-**This project leverages Azure Data Factory (ADF) to implement a Copy Activity that ingests data from GitHub repositories into Azure Data Lake Storage (ADLS). The solution follows the Medallion Architecture (Bronze, Silver, Gold layers) for data refinement and transformation.**
+This project demonstrates how to use **Azure Data Factory (ADF)** to ingest data from GitHub repositories into **Azure Data Lake Storage (ADLS)**, following the **Medallion Architecture** (Bronze → Silver → Gold). The data is incrementally loaded and refined across layers for analytical and reporting purposes.
 
-Project Architecture
+---
 
-Data Flow Overview
+## 🏗️ Project Architecture
 
-Source: Data extracted from various GitHub repositories.
+### 🔄 Data Flow
 
-Destination: Data is ingested into Azure Data Lake Storage (ADLS) in the Bronze (Landing Layer).
+1. **Source**  
+   - Public data from GitHub repositories (e.g., JSON files).
 
-ADF Pipeline: ADF orchestrates the data movement using:
+2. **Destination**  
+   - Data is initially ingested into the **Bronze Layer** (landing zone) in ADLS.
 
-Linked Services to connect ADF to GitHub and ADLS.
+3. **ADF Pipeline Components**
+   - **Linked Services**: Connects ADF to GitHub and ADLS.
+   - **ForEach Activity**: Dynamically loops through multiple datasets.
+   - **Copy Activity**: Moves data from GitHub to ADLS (Bronze layer).
 
-ForEach Activity to loop through multiple datasets dynamically.
+---
 
-Copy Activity to load data from GitHub to the Bronze layer in ADLS.
+## 🔧 Components
 
-Components
+### 1. 🔗 Linked Services
+- **GitHub Linked Service**  
+  - Authenticated connection to fetch data from public GitHub repositories.
+  
+- **ADLS Linked Service**  
+  - Secure connection to Azure Data Lake Storage for landing the data.
 
-1. Linked Services
+### 2. 📁 Datasets
+- **Source Dataset**  
+  - Points to GitHub JSON files.
+  
+- **Sink Dataset**  
+  - Configured to write data to appropriate locations in ADLS.
 
-GitHub Linked Service: Configured with appropriate authentication to pull data from public repositories.
+### 3. 🛠️ Pipeline Configuration
+- **ForEach Activity**  
+  - Iterates over a list of repositories or datasets for dynamic data loading.
+  
+- **Copy Activity**  
+  - Executes the actual data movement from GitHub to ADLS within the loop.
+  
+- **Incremental Loading**  
+  - Configured where applicable to avoid reprocessing and improve performance.
 
-ADLS Linked Service: Utilized to connect to Azure Data Lake for data storage.
+### 4. 🏛️ Medallion Architecture Implementation
+- **Bronze Layer (Raw Data)**  
+  - Ingested data directly from GitHub; minimally processed.
 
-2. Datasets
+- **Silver Layer (Refined Data)**  
+  - Cleaned and structured data for analytical readiness.
 
-Source datasets reference GitHub JSON files.
+- **Gold Layer (Curated Data)**  
+  - Business-ready data used for reporting and dashboarding (e.g., Power BI).
 
-Sink datasets are configured to write data to ADLS.
+---
 
-3. Pipeline Configuration
+## 🌟 Key Features
 
-For Each activity iterates through a list of datasets to dynamically copy multiple files from GitHub.
+✅ Dynamic ingestion of multiple datasets via `ForEach` activity  
+✅ Secure and reusable connections using Linked Services  
+✅ Incremental load for optimized performance  
+✅ Follows **Medallion Architecture** best practices for scalable and clean data transformation
 
-Copy Activity within the ForEach loop moves data from GitHub to the Bronze layer in ADLS.
+---
 
-The pipeline is configured for incremental loading where possible.
+## ✅ Prerequisites
 
-4. Medallion Architecture Implementation
+- 🔧 Azure Data Factory instance  
+- 🗄️ Azure Data Lake Storage (ADLS) account  
+- 🌐 Access to desired GitHub repositories  
+- 🔐 Azure Key Vault (for securely managing credentials and secrets)
 
-Bronze Layer (Landing Zone): Raw data copied directly from GitHub.
+---
 
-Silver Layer: Cleaned and structured data for refined analysis.
+## 📬 Contact
 
-Gold Layer: Curated data prepared for business consumption and Power BI reporting.
-**
-Key Features**
-
-✅ Dynamic dataset ingestion using ForEach activity.✅ Secure authentication using Linked Services.✅ Incremental data load to optimize performance.✅ Follows best practices in Medallion Architecture for data quality refinement.
-
-**Prerequisites**
-
-Azure Data Factory Instance.
-
-Azure Data Lake Storage (ADLS) configured for data storage.
-
-Access to the desired GitHub repositories.
-
-Azure Key Vault for securely managing credentials.
+For questions or collaboration, feel free to reach out at:  
+📧 *[Your Contact Email]*
